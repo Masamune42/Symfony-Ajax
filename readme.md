@@ -1,15 +1,15 @@
-# Codebase pour l'initiation à AJAX avec Symfony
-Ce code sert uniquement à la vidéo d'initiation à AJAX avec Symfony !
+# Initiation à AJAX avec Symfony
+Reprise du code de base pour suivre la vidéo d'initiation à AJAX avec Symfony
 
 # Installation
 ```
-# On clone le dépot les bros !
+# On clone le dépot
 git clone https://github.com/liorchamla/cours-ajax.git
 
 # On se déplace dans le dossier
 cd cours-ajax
 
-# On installe les dépendances !
+# On installe les dépendances
 composer install
 
 # On créé la base de données

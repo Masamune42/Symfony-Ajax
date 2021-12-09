@@ -38,26 +38,34 @@
     <script>
         function onClickBtnLike(event) {
             event.preventDefault();
-
+            // this => le lien cliqué (<a ...>)
+            // URL sur lequel on a cliqué
             const url = this.href;
+            // span qui contient le nombre de likes
             const spanCount = this.querySelector('span.js-likes');
+            // icone du lien (font-awesome)
             const icone = this.querySelector('i');
 
+            // On envoie l'URL en GET
             axios.get(url).then(function(response) {
+                // On récupère le nombre de likes et on le remplace à l'affichage
                 spanCount.textContent = response.data.likes;
+                // Si la classe de l'icone contient 'fas' ou 'far', on le change (pource rempli / liké <=> pas rempli / non liké)
                 if(icone.classList.contains('fas'))
                     icone.classList.replace('fas', 'far')
                 else
                     icone.classList.replace('far', 'fas')
             }).catch(function (error) { 
+                // Si erreur 403 = user non connecté, on renvoie un message d'erreur
                 if (error.response.status === 403) {
                     window.alert("Vous ne pouvez pas liker un artcle si vous n'êtes pas connecté !")
-                } else {
+                } else { // Sinon c'est qu'une plus grosse erreur s'est produite
                     window.alert("Une erreur s'est produite")
                 }
             })
         }
 
+        // On ajoute un eventListener sur chaque lien à like
         document.querySelectorAll('a.js-like').forEach(function(link) {
             link.addEventListener('click', onClickBtnLike);
         })
